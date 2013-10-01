@@ -49,7 +49,6 @@
         app.directive("loadingIndicator", function() {
             return {
                 restrict : "A",
-                scope : {},
                 template: "<div>Loading...</div>",
                 link : function(scope, element, attrs) {
                     scope.$on("loading-started", function(e) {
