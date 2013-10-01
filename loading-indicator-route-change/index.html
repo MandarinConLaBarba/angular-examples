@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div ng-app="loadingIndicatorApp" ng-controller="appController">
+
+    <div loading-indicator></div>
+
+    <div ng-view>
+
+    </div>
+
+</div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+
+<script>
+
+    var app = angular.module("loadingIndicatorApp", ["ngRoute"]);
+
+
+    app.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.
+                when('/', {
+                    template: "<h2>Item List</h2><div ng-repeat=\"item in items\"><div><a href=\"#/items/{{item.id}}\">{{item.id}} - {{item.description}}</a></div></div></div>",
+                    controller: "itemListController",
+                    resolve : {
+                        data : itemListController.loadItems
+                    }
+                }).
+                when('/items/:itemId', {
+                    template: "<h2>Item Detail</h2><div>ID: {{item.id}}, Description: {{item.description}}</div>",
+                    controller: "itemController",
+                    resolve : {
+                        data : itemController.loadItem
+                    }}).
+                otherwise({redirectTo: '/'});
+    }]);
+
+
+    app.directive("loadingIndicator", function() {
+        return {
+            restrict : "A",
+            template: "<div>Loading...</div>",
+            link : function(scope, element, attrs) {
+                scope.$on("loading-started", function(e) {
+                    console.log("loading started")
+                    element.css({"display" : ""});
+                });
+
+                scope.$on("loading-complete", function(e) {
+                    console.log("loading completed");
+                    element.css({"display" : "none"});
+                });
+
+            }
+        };
+    });
+
+    app.controller("appController", function($scope, $rootScope) {
+
+        $rootScope.$on("$routeChangeStart", function(e) {
+            //show indicator
+            $rootScope.$broadcast("loading-started");
+        });
+        $rootScope.$on("$routeChangeSuccess", function(e) {
+            //hide indicator
+            $rootScope.$broadcast("loading-complete");
+        });
+        $rootScope.$on("$routeChangeError", function(e) {
+            //show error..
+        });
+
+    });
+
+    var itemController = app.controller("itemController", ['$scope', 'data', function($scope, data) {
+        $scope.item = data;
+
+    }]);
+
+    itemController.loadItem = ['$q', '$http', '$route', function($q, $http, $route) {
+        var config = {
+            params: {
+                'rows' : 1,
+                'id' : $route.current.params.itemId,
+                'description': '{lorem|10}',
+                'delay' : 1,
+                'callback': "JSON_CALLBACK"
+            }
+        };
+
+        var deferred = $q.defer();
+
+
+        $http.jsonp("http://www.filltext.com", config, {})
+                .success(function(data) {
+                    deferred.resolve(data[0]);
+                })
+                .error(function() {
+                    deferred.reject("Failed to fetch item.")
+                });
+
+        return deferred.promise;
+
+
+    }];
+
+    var itemListController = app.controller("itemListController", ['$scope', 'data', function($scope, data) {
+
+        $scope.items = data;
+
+    }]);
+
+    itemListController.loadItems = ['$q', '$http', function($q, $http) {
+        var config = {
+            params: {
+                'rows': 10,
+                'id' : '{index}',
+                'description': '{lorem|10}',
+                'delay' : 1,
+                'callback': "JSON_CALLBACK"
+            }
+        };
+
+        var deferred = $q.defer();
+
+        $http.jsonp("http://www.filltext.com", config, {})
+                .success(function(data) {
+                    deferred.resolve(data);
+                })
+                .error(function() {
+                    deferred.reject("Failed to fetch items.")
+                });
+
+        return deferred.promise;
+
+    }];
+
+
+</script>
+
+</body>
+</html>
