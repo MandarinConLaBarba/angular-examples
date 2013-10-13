@@ -1,0 +1,3 @@
+# AngularJS Examples
+
+A collection of examples targeting common scenerios/problems in web-app development...
