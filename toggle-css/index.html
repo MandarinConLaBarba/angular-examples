@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .button {
+            border: 1px solid #000;
+            border-radius: 3px;
+            -webkit-box-shadow: 1px 1px 1px 0px #000000;
+            -moz-box-shadow: 1px 1px 1px 0px #000000;
+            box-shadow: 1px 1px 1px 0px #000000;
+            background-color: lightgray;
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button.active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-app="exampleApp">
+
+    <div
+       ng-class="{'button': !isActive, 'button active': isActive}"
+       ng-init="isActive = false"
+       ng-click="isActive = !isActive">
+        Click Me
+    </div>
+
+
+</div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module("exampleApp", []);
+</script>
+
+</body>
+</html>
