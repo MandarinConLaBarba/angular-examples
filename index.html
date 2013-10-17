@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href="styles/foundation.min.css" rel="stylesheet">
+    <link href="styles/app.css" rel="stylesheet">
+
+</head>
+<body>
+
+<script src="bower_components/angular/angular.min.js"></script>
+
+<div ng-app="githubPagesApp"
+     ng-controller="appController">
+
+    <nav class="top-bar">
+        <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+                <h1><a href="#">{{title}}</a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="row" ng-repeat="example in examples">
+        <div class="twelve columns">
+            <h3>{{example.title}}</h3>
+
+            <p>{{example.description}}</p>
+
+            <a ng-href="{{example.path}}">demo</a>
+
+            <a ng-href="{{repoBaseUrl}}{{example.path}}">source</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var app = angular.module("githubPagesApp", []);
+
+    app.controller("appController", function($scope) {
+
+        $scope.repoBaseUrl = "https://github.com/MandarinConLaBarba/angular-examples/tree/master/";
+        $scope.title = "Angular Examples";
+        $scope.examples = [
+            {
+                title : "Loading indicator, the Angular Way",
+                description : "A loading indicator, the Angular way. Uses a directive, httpInterceptor, and events to get the job done.",
+                path : "loading-indicator"
+            },
+            {
+                title : "Loading indicator, the Angular Way (2)",
+                description : "Another loading indicator, the Angular way. Uses the route provider and core routing events to get the job done.",
+                path : "loading-indicator-route-change"
+            },
+            {
+                title : "CSS Class Toggling",
+                description : "Demonstrates how to toggle CSS classes without involving the controller. " +
+                        "A lot of examples show the controller referencing the DOM. This follows the widely accepted principle" +
+                        "(and the 'Angular Way') that dictates the controller shouldn't reference DOM elements.",
+                path : "toggle-css"
+            },
+            {
+                title : "Panel Toggler Directive",
+                description : "A useful, reusable directive that toggles the visibility of content",
+                path : "toggle-content-directive"
+            }];
+    });
+
+    app.directive('toggler', function() {
+        return {
+            restrict : "A",
+            scope : {
+                "switch" : "="
+            },
+
+            templateUrl : "toggle-content-directive/toggler.html",
+            transclude : true
+
+        };
+    })
+</script>
+
+</body>
+</html>
