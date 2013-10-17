@@ -3,6 +3,9 @@
 <head>
     <title></title>
 
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <style type="text/css">
         .button {
             border: 1px solid #000;
@@ -19,17 +22,48 @@
         .button.active {
             background-color: yellow;
         }
+
+        body {
+            margin: 50px;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
 <div ng-app="exampleApp">
 
-    <div
-            ng-class="{'button': !isActive, 'button active': isActive}"
-            ng-init="isActive = false"
-            ng-click="isActive = !isActive">
-        Click Me
+    <div>
+        <div toggler switch="showPanel1">Panel 1</div>
+
+        <div ng-show="showPanel1"
+             ng-init="showPanel1 = false"
+             class="panel">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare id metus id ullamcorper. Aenean laoreet purus sit amet lacus mattis, nec hendrerit est tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dapibus neque. Nulla magna odio, pharetra accumsan bibendum a, porttitor in nisi. Nam dictum tellus et dolor malesuada pharetra. Vestibulum eu felis quis metus feugiat sodales et sit amet magna. In hac habitasse platea dictumst. In odio lectus, commodo a ligula sit amet, gravida commodo odio.
+        </div>
+    </div>
+
+    <div>
+        <div toggler switch="showPanel2">Panel 2</div>
+
+        <div ng-show="showPanel2"
+             ng-init="showPanel2 = true"
+             class="panel">
+            Sed interdum, velit nec varius semper, felis tortor posuere mi, in dictum lacus risus et lectus. Pellentesque consequat, erat ut lobortis volutpat, lacus libero scelerisque ante, sit amet bibendum libero risus non turpis. Sed placerat luctus risus a rhoncus. Nunc viverra, orci at venenatis ullamcorper, felis arcu auctor dolor, aliquam pellentesque tortor lorem ut felis. Proin congue sit amet tortor a sodales. Phasellus ut erat vel arcu rutrum laoreet id sed orci. Praesent a dictum nibh. Aenean vestibulum consequat enim, sed sodales nulla placerat in. Nam sit amet neque ut lorem interdum rhoncus. Sed a nisi quis nibh lacinia blandit ut sit amet magna. Vestibulum sagittis justo sit amet tortor blandit, nec rhoncus nunc molestie. Cras sit amet cursus erat. Nunc bibendum tortor elit, sed tristique enim rutrum eu. Phasellus semper tincidunt magna ut cursus.
+        </div>
+    </div>
+
+    <div>
+        <div toggler switch="showPanel3">Panel 3</div>
+
+        <div ng-show="showPanel3"
+             ng-init="showPanel3 = false"
+             class="panel">
+            Etiam rutrum magna vitae erat pellentesque, sed adipiscing lorem tincidunt. Pellentesque in lorem eros. Aenean id dictum nisi, et placerat dolor. Praesent adipiscing magna sit amet facilisis interdum. Pellentesque bibendum ac eros sed pulvinar. Aenean eget orci eros. Donec consequat purus vitae libero congue lacinia.
+        </div>
     </div>
 
 
@@ -39,6 +73,19 @@
 
 <script>
     var app = angular.module("exampleApp", []);
+
+    app.directive('toggler', function() {
+        return {
+            restrict : "A",
+            scope : {
+                "switch" : "="
+            },
+
+            templateUrl : "toggler.html",
+            transclude : true
+
+        };
+    })
 </script>
 
 </body>
