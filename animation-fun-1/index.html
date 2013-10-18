@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="../styles/app.css"/>
+    <link rel="stylesheet" href="../styles/foundation.min.css"/>
+
+    <style type="text/css">
+        .new-content-panel {
+            z-index: 100;
+        }
+    </style>
+
+</head>
+<body>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+
+
+
+<div ng-app="exampleApp">
+
+
+    <div class="row">
+
+        <div class="eight columns">
+            <h2>Animation Fun</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id="new-content-form-target" class="eight columns offset-by-two">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six columns">
+            <content-form target="#new-content-form-target"></content-form>
+            <content>
+                Curabitur venenatis scelerisque quam, sed convallis eros commodo sed. Nunc interdum nibh et ipsum ornare sollicitudin. Quisque arcu lectus, porttitor vitae lobortis ac, rhoncus et eros. Nullam nec volutpat orci. Morbi eget elit ut nulla varius iaculis. Cras ipsum arcu, luctus et quam sed, cursus rhoncus nibh. Duis in magna diam. Nullam sit amet massa adipiscing, malesuada sapien a, rhoncus arcu. Donec quam arcu, sodales in mi quis, sollicitudin tristique mi. Fusce ut mattis neque. Morbi malesuada mollis ornare.
+            </content>
+            <content>
+                Maecenas aliquam, mi ac faucibus pharetra, dolor tellus tristique elit, sit amet pulvinar augue urna ut nulla. Donec non libero lacus. Ut semper rhoncus congue. In sollicitudin nunc et sapien aliquet aliquet. Mauris sagittis dui at imperdiet semper. Vivamus auctor convallis placerat. Aliquam accumsan iaculis tempus. Donec pharetra et tortor vel hendrerit. Ut ultricies, erat vel aliquam gravida, lacus orci consectetur sem, non posuere enim sapien eget odio.
+            </content>
+            <content>
+                Ut purus lorem, rhoncus sit amet ligula fermentum, ornare aliquam purus. Nullam id risus scelerisque, vestibulum lectus at, porta nisi. Nullam tincidunt lacus sapien, sit amet vulputate nisl cursus vel. Morbi lectus arcu, tempor eu quam nec, imperdiet porta augue. Duis blandit erat sagittis, condimentum nunc quis, accumsan nibh. Etiam ac elementum odio, sed ultricies dui. Proin in mi diam. Nunc tellus velit, tempor quis lorem non, sodales fringilla turpis. Nulla elit erat, egestas ut pretium fermentum, elementum id urna. Ut mollis metus et nisl laoreet porttitor. Duis facilisis vehicula felis id volutpat. Sed lobortis orci purus, id sagittis odio pellentesque sit amet.
+            </content>
+        </div>
+
+        <div class="six columns">
+            <content>
+                Vestibulum in mauris cursus, mollis lectus sit amet, vestibulum quam. Nunc interdum mi a justo semper bibendum. Duis nec purus fermentum, ullamcorper nunc sit amet, vehicula nisi. Vivamus accumsan scelerisque leo. Sed commodo nibh eu eros faucibus, vitae laoreet nibh viverra. Aenean a aliquet odio. Sed tortor est, malesuada et sapien sit amet, facilisis tempus ante. Quisque interdum massa et accumsan placerat. Nam sagittis massa dui, vitae ullamcorper justo pretium at. Mauris lacinia interdum ligula non vestibulum. Curabitur hendrerit imperdiet purus, eget mattis diam varius aliquet. Cras eget tincidunt tortor. Aliquam vehicula, eros eget pulvinar bibendum, mi felis fermentum neque, ac egestas ipsum enim sit amet erat. Curabitur eget ante quis quam fermentum pretium eget quis est.
+            </content>
+            <content>
+                Curabitur venenatis scelerisque quam, sed convallis eros commodo sed. Nunc interdum nibh et ipsum ornare sollicitudin. Quisque arcu lectus, porttitor vitae lobortis ac, rhoncus et eros. Nullam nec volutpat orci. Morbi eget elit ut nulla varius iaculis. Cras ipsum arcu, luctus et quam sed, cursus rhoncus nibh. Duis in magna diam. Nullam sit amet massa adipiscing, malesuada sapien a, rhoncus arcu. Donec quam arcu, sodales in mi quis, sollicitudin tristique mi. Fusce ut mattis neque. Morbi malesuada mollis ornare.
+            </content>
+            <content>
+                Ut purus lorem, rhoncus sit amet ligula fermentum, ornare aliquam purus. Nullam id risus scelerisque, vestibulum lectus at, porta nisi. Nullam tincidunt lacus sapien, sit amet vulputate nisl cursus vel. Morbi lectus arcu, tempor eu quam nec, imperdiet porta augue. Duis blandit erat sagittis, condimentum nunc quis, accumsan nibh. Etiam ac elementum odio, sed ultricies dui. Proin in mi diam. Nunc tellus velit, tempor quis lorem non, sodales fringilla turpis. Nulla elit erat, egestas ut pretium fermentum, elementum id urna. Ut mollis metus et nisl laoreet porttitor. Duis facilisis vehicula felis id volutpat. Sed lobortis orci purus, id sagittis odio pellentesque sit amet.
+            </content>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    var app = angular.module("exampleApp", ['ngAnimate']);
+
+    app.directive('contentForm', function() {
+
+        function deactivateForm(element, target, origElemWidth, scope) {
+            scope.deactivating = true;
+            element.css('position', 'relative');
+
+            TweenLite.to(target,.5, {height : 0, onComplete : function() {
+
+            }});
+            TweenLite.to(element, 1, {
+                width: origElemWidth
+            });
+            TweenLite.to(element, 1, {
+                left : 0,
+                top : 0,
+                onComplete : function() {
+                    scope.active = false;
+                    scope.deactivating = false;
+                }
+            });
+
+        }
+
+        function activateForm(element, target) {
+
+            element.css('position', 'absolute');
+
+            var targetOffset = target.offset(),
+                    elementOffset = element.offset();
+
+            var targetWidth = target.width();
+            //messy, assumes knowledge of element margins, padding, etc
+            var elementHeightWithBuffer = element.height() + 100;
+            var tweenOffset = {
+                left : elementOffset.left - targetOffset.left,
+                top : (elementOffset.top - (targetOffset.top - elementHeightWithBuffer))
+            };
+
+            //slide down the target, so the element has somewhere to go
+            TweenLite.to(target,.5, {height : elementHeightWithBuffer});
+            //increase the width of the content form to that of the target container
+            TweenLite.to(element, 1, {width: targetWidth});
+            //move the content form to the position of the target container
+            TweenLite.to(element, 1, {
+                left : -tweenOffset.left,
+                top : -tweenOffset.top
+            });
+
+
+        }
+
+        return {
+
+            restrict : "E",
+            replace: true,
+            templateUrl : 'content-form.html',
+            scope : {},
+            link : function(scope, element, attrs) {
+
+                //messy, assumes knowledge of DOM structure..
+                var origElemWidth = element.parent().width();
+
+
+                scope.deactivate = function() {
+                    var target = $(attrs.target);
+                    console.log(origElemWidth);
+                    deactivateForm(element, target, origElemWidth, scope);
+
+                };
+                scope.activate = function() {
+                    if (scope.active) {
+                        return;
+                    }
+                    scope.active = true;
+
+                    var target = $(attrs.target);
+
+                    activateForm(element, target);
+
+                };
+            }
+
+        };
+    });
+
+
+
+    app.directive('content', function() {
+        return {
+
+            restrict : "E",
+            replace: true,
+            transclude : true,
+            scope : {},
+            template : '<div class="panel" ng-transclude></div>',
+            link : function() {
+
+            }
+
+        };
+    });
+
+
+
+</script>
+
+
+</body>
+</html>
