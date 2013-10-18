@@ -14,8 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.0-rc.2",
-    "angular-route": "~1.2.0-rc.2",
+    "angular": "~1.2.0-rc.3",
+    "angular-route": "~1.2.0-rc.3",
     "font-awesome": "~3.2.1",
     "angular-animate": "~1.2.0-rc.3"
   }
