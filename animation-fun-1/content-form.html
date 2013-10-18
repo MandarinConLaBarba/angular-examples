@@ -1,0 +1,33 @@
+<div class="panel new-content-panel" ng-click="activate()">
+    <form>
+        <fieldset>
+            <legend>New Content</legend>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <label>Title</label>
+                    <input type="text" placeholder="Title">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <label>Body</label>
+                    <textarea placeholder="Body" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div class="row" ng-show="active && !deactivating">
+                <div class="two columns offset-by-three">
+                    <div class="button" ng-click="deactivate()">Cancel</div>
+                </div>
+                <div class="one columns offset-by-one">
+                    <div class="button">Submit</div>
+                </div>
+                <div class="one columns">
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
