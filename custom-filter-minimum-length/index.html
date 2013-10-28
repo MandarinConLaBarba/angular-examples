@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Filter: Minimum Length</title>
+
+    <link href="../styles/foundation.min.css" rel="stylesheet">
+    <link href="../styles/app.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+<div ng-app="exampleApp" ng-controller="appController">
+
+    <div class="row">
+        <div class="four columns">
+            Enter at least three characters: <br/>
+            <input type="text" ng-model="query" />
+        </div>
+        <div class="four columns">
+
+        </div>
+
+    </div>
+
+    <div class="row" ng-repeat="dataItem in dataSet | customFilter:query:3">
+
+        <div class="two columns">
+            {{dataItem.id}}
+        </div>
+        <div class="ten columns">
+            {{dataItem.description}}
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module("exampleApp", []);
+
+    app.controller("appController", function($scope) {
+
+
+        $scope.dataSet = [
+            {
+                id : 1001,
+                description : "Sed interdum, velit nec varius semper, felis tortor posuere mi, in dictum lacus risus et lectus. Pellentesque consequat, erat ut lobortis volutpat, lacus libero scelerisque ante, sit amet bibendum libero risus non turpis. Sed placerat luctus risus a rhoncus. Nunc viverra, orci at venenatis ullamcorper, felis arcu auctor dolor, aliquam pellentesque tortor lorem ut felis. Proin congue sit amet tortor a sodales. Phasellus ut erat vel arcu rutrum laoreet id sed orci. Praesent a dictum nibh. Aenean vestibulum consequat enim, sed sodales nulla placerat in. Nam sit amet neque ut lorem interdum rhoncus. Sed a nisi quis nibh lacinia blandit ut sit amet magna. Vestibulum sagittis justo sit amet tortor blandit, nec rhoncus nunc molestie. Cras sit amet cursus erat. Nunc bibendum tortor elit, sed tristique enim rutrum eu. Phasellus semper tincidunt magna ut cursus."
+            },
+            {
+                id : 2001,
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare id metus id ullamcorper. Aenean laoreet purus sit amet lacus mattis, nec hendrerit est tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dapibus neque. Nulla magna odio, pharetra accumsan bibendum a, porttitor in nisi. Nam dictum tellus et dolor malesuada pharetra. Vestibulum eu felis quis metus feugiat sodales et sit amet magna. In hac habitasse platea dictumst. In odio lectus, commodo a ligula sit amet, gravida commodo odio."
+            },
+            {
+                id : 3001,
+                description : "Maecenas aliquam, mi ac faucibus pharetra, dolor tellus tristique elit, sit amet pulvinar augue urna ut nulla. Donec non libero lacus. Ut semper rhoncus congue. In sollicitudin nunc et sapien aliquet aliquet. Mauris sagittis dui at imperdiet semper. Vivamus auctor convallis placerat. Aliquam accumsan iaculis tempus. Donec pharetra et tortor vel hendrerit. Ut ultricies, erat vel aliquam gravida, lacus orci consectetur sem, non posuere enim sapien eget odio."
+            },
+            {
+                id : 3002,
+                description : "Etiam rutrum magna vitae erat pellentesque, sed adipiscing lorem tincidunt. Pellentesque in lorem eros. Aenean id dictum nisi, et placerat dolor. Praesent adipiscing magna sit amet facilisis interdum. Pellentesque bibendum ac eros sed pulvinar. Aenean eget orci eros. Donec consequat purus vitae libero congue lacinia."
+            }
+
+        ];
+
+
+    });
+
+
+    app.filter('customFilter', function ($filter) {
+
+        var defaultFilter = $filter('filter');
+
+        return function (dataSet, query, minQueryLength) {
+
+            minQueryLength = minQueryLength || 3;
+
+            if (query && query.length >= minQueryLength) {
+
+                return defaultFilter(dataSet, query);
+
+            } else {
+                return dataSet;
+            }
+
+        };
+    });
+</script>
+
+</body>
+</html>
+
