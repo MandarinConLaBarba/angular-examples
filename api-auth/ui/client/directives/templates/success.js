@@ -1,0 +1,1 @@
+module.exports = '<div class="alert-success" ng-show="success && !error">\n    <h3>Success.</h3>\n    {{success.message}}\n    <p>\n        {{success.details | json}}\n    </p>\n</div>\n';

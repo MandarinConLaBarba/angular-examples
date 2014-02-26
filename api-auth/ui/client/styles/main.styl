@@ -1,0 +1,241 @@
+top-bar-color = #2c2c2c
+primary-color = #55a1ff
+secondary-color = #ffffff
+tertiary-color = #55a1ff
+drop-shadow-color = #3f3f3f
+highlight-color = #f7ffca
+
+gradient-bg()
+  background: arguments; /* Old browsers */
+  background: arguments -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
+  background: arguments -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
+  background: arguments -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
+  background: arguments -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Opera11.10+ */
+  background: arguments -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* IE10+ */
+  background: arguments linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* W3C */
+
+clickable()
+  cursor pointer
+h1,h2,h3,h4,h5,h6
+  font-family Helvetica, Arial, sans-serif
+
+curtain(nopacity)
+  position absolute
+  z-index 99
+  left 0
+  top 0
+  width 120%
+  height 1000px
+  background #ffffff
+  opacity nopacity
+curtain-content()
+  position absolute
+  left 25%
+  top 100px
+  background-color secondary-color
+  border 1px solid tertiary-color
+  padding 20px
+  border-radius (3px)
+
+content-shadow()
+  box-shadow 1px 1px 1px drop-shadow-color
+
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+icon()
+  width 26px
+  height 26px
+  clickable()
+  background-repeat no-repeat
+
+button()
+  line-height 1.8em
+  border 1px solid #000000
+  border-radius(3px)
+  box-shadow 1px 1px 1px #000000
+  background-color lightgray
+  font-weight bold
+
+list-item-bg()
+  background-color secondary-color
+  border 1px solid secondary-color
+list-item-bg-alt()
+  background-color primary-color
+  border 1px solid primary-color
+
+.list-item
+  border-radius(3px)
+
+.list-item.checked
+  border: 1px solid tertiary-color
+  background-color highlight-color
+.list-item.highlighted
+  background-color highlight-color
+
+.loading-curtain
+  curtain(1)
+.loading
+  curtain-content()
+  content-shadow()
+
+
+transition-linear()
+  -webkit-transition all linear arguments
+  -moz-transition all linear arguments
+  -o-transition all linear arguments
+  transition all linear arguments
+
+
+.fader.ng-hide-add,
+.fader.ng-hide-remove
+  transition-linear(0.5s)
+  display block!important
+
+.fader.ng-hide-add.ng-hide-add-active,
+.fader.ng-hide-remove
+  opacity 0
+.fader.ng-hide-add,
+.fader.ng-hide-remove.ng-hide-remove-active
+  opacity 1
+
+.list-item-header
+  font-weight bold
+
+.disabled-for-now-list-item.ng-enter,
+.disabled-for-now-list-item.ng-leave
+  transition-linear(0.5s)
+
+.disabled-for-now-list-item.ng-enter,
+.disabled-for-now-list-item.ng-leave.ng-leave-active
+  opacity 0
+
+.disabled-for-now-list-item.ng-leave,
+.disabled-for-now-list-item.ng-enter.ng-enter-active
+  opacity 1
+
+.back-button
+  margin-bottom 20px
+.back-button.large
+  min-width 175px
+
+.top-bar
+  width 100%
+  box-shadow 0px 1px 0px tertiary-color
+  color tertiary-color
+  background-color top-bar-color
+  a
+    text-decoration none
+    color tertiary-color
+  a:visited
+    color primary-color
+  h1
+    padding-left 10px
+    font-weight bold
+
+.logout-container
+  position absolute
+  right: 10px
+  top: 10px
+
+#footer
+  position fixed
+  bottom 10px
+  right 10px
+
+
+.inset
+  border 1px solid tertiary-color
+  content-shadow()
+  margin-bottom 20px
+  border-radius(3px)
+  position relative
+  display block
+  overflow auto
+  background-color primary-color
+  .row
+    margin-top 5px
+    margin-bottom 5px
+
+
+.close-button
+  position absolute
+  right 10px
+  top 10px
+
+button()
+  clickable()
+  text-decoration none
+
+.icon-button,.close-button
+  button()
+
+.icon-button
+  font-size 1.3em
+
+.icon-failure
+  color red
+.icon-success
+  color green
+
+.progress-bar
+  border 1px solid tertiary-color;
+  border-radius(4px)
+  padding-right 12px
+  .progress
+    white-space nowrap
+    background-color tertiary-color
+    margin 1px
+    border-radius (3px)
+    padding-left 10px
+    text-align center
+    font-weight bold
+  .progress.inverse
+      color #ffffff
+
+.button:hover
+  gradient-bg(highlight-color)
+.button
+  gradient-bg(secondary-color)
+  i
+    display inline
+    font-size 1.1em
+  font-size 1.3em
+
+.button-submit
+  min-width 105px
+.button-submit.ng-hide
+  visibility hidden
+  display inline-block !important
+
+.clickable
+  clickable()
+
+alert(clr, bclr)
+  padding 5px
+  margin-top 10px
+  margin-bottom 10px
+  border 2px solid bclr
+  background-color clr
+  border-radius(3px)
+  content-shadow()
+
+
+.alert-success
+  alert(lightgreen, green)
+
+.alert-error
+  alert(lightcoral, red)
+
+.icon-1p5x {
+  font-size 1.5em
+}
+
+#loginCurtain
+  curtain(.9)
+#loginContainer
+  curtain-content()
+
+

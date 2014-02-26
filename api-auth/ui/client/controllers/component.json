@@ -1,0 +1,11 @@
+{
+    "name": "controllers",
+    "dependencies": {
+    },
+    "scripts": [
+        "productDetail.js",
+        "productList.js",
+        "app.js"
+    ]
+}
+

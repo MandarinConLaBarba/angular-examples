@@ -1,0 +1,16 @@
+{
+  "name": "ui",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {},
+  "development": {
+    "techjacker/expect.js": "*"
+  },
+  "local": [
+    "app"
+  ],
+  "paths": [
+    "client"
+  ],
+  "remotes": []
+}

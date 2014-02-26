@@ -1,0 +1,7 @@
+{
+    "port" : 3451,
+    "api" : {
+        "host" : "localhost",
+        "port" : 3450
+    }
+}

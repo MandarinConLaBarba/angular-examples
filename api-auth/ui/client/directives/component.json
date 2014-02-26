@@ -1,0 +1,19 @@
+{
+    "name": "directives",
+    "scripts": [
+        "effects/fadeIn.js",
+        "error.js",
+        "success.js",
+        "loading.js",
+        "toggler.js",
+        "login.js",
+        "logout.js",
+        "templates/success.js",
+        "templates/error.js",
+        "templates/login.js",
+        "templates/logout.js",
+        "templates/toggler.js"
+    ]
+
+}
+

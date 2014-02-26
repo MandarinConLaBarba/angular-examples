@@ -1,0 +1,45 @@
+<div fx-fade-in>
+
+    <loading target="product"></loading>
+
+    <div error></div>
+    <div success></div>
+
+    <div class="inset" id="productDetailContainer">
+
+        <div toggler
+             switch="showProduct">Product Detail: {{product.name}}</div>
+
+        <div ng-init="showProduct = true"
+             ng-show="showProduct"
+             class="nested-container fader">
+
+            <div class="row">
+                <div class="three columns">
+                    Id:
+                </div>
+                <div class="eight columns">
+                    {{product.id}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="three columns">
+                    Name:
+                </div>
+                <div class="eight columns">
+                    {{product.name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="three columns">
+                    Description:
+                </div>
+                <div class="eight columns">
+                    {{product.description}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

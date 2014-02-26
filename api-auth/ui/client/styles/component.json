@@ -1,0 +1,12 @@
+{
+    "name": "controllers",
+    "dependencies": {
+    },
+    "styles": [
+        "skeleton/base.css",
+        "skeleton/layout.css",
+        "skeleton/skeleton.css",
+        "main.css"]
+}
+
+

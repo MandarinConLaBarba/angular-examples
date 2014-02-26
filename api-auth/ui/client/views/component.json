@@ -1,0 +1,10 @@
+{
+    "name": "views",
+    "dependencies": {
+    },
+    "scripts": [
+        "productDetail.js",
+        "productList.js"
+    ]
+}
+

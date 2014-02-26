@@ -1,0 +1,24 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "authors": [
+    "Mandarin Drummond <mandarind@gmail.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.2",
+    "angular-route": "^1.2",
+    "angular-animate": "^1.2",
+    "tweenmax": "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.1/TweenMax.min.js",
+    "font-awesome": "~3.2.1",
+    "angular-http-auth": "~1.2.1",
+    "angular-cookies": "~1.2.13"
+  }
+}

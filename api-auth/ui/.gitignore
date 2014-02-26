@@ -1,0 +1,5 @@
+components
+node_modules
+bower_components
+.idea
+client-build

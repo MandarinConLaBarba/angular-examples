@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products!</title>
+    <link rel='stylesheet' href='/build.css'/>
+    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
+
+</head>
+<body>
+<script src="/bower/ng-file-upload/angular-file-upload-shim.min.js"></script>
+<script src="/bower/angular/angular.min.js"></script>
+<script src="/bower/angular-cookies/angular-cookies.min.js"></script>
+<script src="/bower/angular-route/angular-route.min.js"></script>
+<script src="/bower/angular-http-auth/src/http-auth-interceptor.js"></script>
+<script src="/bower/angular-animate/angular-animate.min.js"></script>
+<script src="/bower/tweenmax/index.js"></script>
+
+
+<script src="build.js"></script>
+
+<script>
+    var appName = "productApp",
+        app = require('app').buildApp(appName);
+
+</script>
+
+<div id="mainAppContainer" ng-app="productApp" ng-controller="appController">
+
+    <login ng-hide="loggedIn"></login>
+
+    <div class="top-bar">
+            <div class="title-container">
+                <h2><a href="/">{{title}}</a></h2>
+            </div>
+            <div class="logout-container">
+                <logout ng-show="loggedIn"></logout>
+            </div>
+
+    </div>
+
+    <div ng-hide="!loggedIn" class="container" ng-view></div>
+
+</div>
+
+</body>
+</html>

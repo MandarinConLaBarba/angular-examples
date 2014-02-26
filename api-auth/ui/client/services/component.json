@@ -1,0 +1,11 @@
+{
+    "name": "services",
+    "dependencies": {
+    },
+    "scripts": [
+        "product.js",
+        "api.js",
+        "login.js"
+    ]
+}
+

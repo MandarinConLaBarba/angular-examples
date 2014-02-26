@@ -1,0 +1,1 @@
+module.exports = '<div ng-click="switch = !switch"\n     class="row clickable">\n    <div class="ten columns">\n        <h4><a class="icon-button">\n            <i ng-class="{\'icon-chevron-sign-down\' : switch, \'icon-chevron-sign-right\' : !switch}"></i>\n        </a><span ng-transclude></span></h4>\n    </div>\n</div>';

@@ -1,0 +1,53 @@
+<div fx-fade-in>
+
+    <loading target="products"></loading>
+
+    <div error></div>
+
+    <!--This filters on any text in order fields.
+        To filter based on a particular order field, see this link http://docs.angularjs.org/api/ng.filter:filter-->
+
+    <div class="inset"
+         id="productListContainer"
+         ng-show="!error">
+
+        <div toggler switch="showProducts">Products</div>
+
+        <div ng-init="showProducts = true"
+             ng-show="showProducts"
+             class="nested-container fader">
+
+            <div class="product-list sixteen columns">
+
+                <div class="row product-item-header list-item-header">
+
+                    <div class="two columns">
+                        ID
+                    </div>
+                    <div class="five columns">
+                        Name
+                    </div>
+                </div>
+
+                <div class='product-item list-item row clickable'
+                     ng-mouseenter="product.highlighted = true"
+                     ng-mouseleave="product.highlighted = false"
+                     ng-click="viewProduct(product.id)"
+                     ng-class="{'highlighted' : product.highlighted}"
+                     ng-class-even="'product-item-even'"
+                     ng-class-odd="'product-item-odd'"
+                     ng-repeat-start="product in products">
+                    <div class="two columns">
+                        #{{product.id}}
+                    </div>
+                    <div class="five columns">
+                        {{product.name}}
+                    </div>
+                </div>
+                <div ng-repeat-end class="clear"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
