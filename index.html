@@ -31,7 +31,7 @@
 
             <p>{{example.description}}</p>
 
-            <a ng-href="{{example.path}}">demo</a>
+            <a ng-if="!example.noDemo" ng-href="{{example.path}}">demo</a>
 
             <a ng-href="{{repoBaseUrl}}{{example.path}}">source</a>
         </div>
@@ -83,6 +83,14 @@
                         "To me this seems to be a gap in the core angular 'filter' filter. This example also shows how you can use core filters within your custom filters " +
                         "to 'enhance' default functionality.",
                 path: "custom-filter-minimum-length"
+            },
+            {
+                title: "API Authentication",
+                description: "When I build apps, I like to have the API be \"pure\", and not accept cookies for authentication. I also like the API to be a completely " +
+                        "separate from the UI (it does not know or care about a user interface). This example demonstrates one way to achieve this goal " +
+                        "w/ an Angular app. Sorry, no demo for this right now (you'll have to download and run it on your own).",
+                noDemo : true,
+                path: "api-auth"
             }
         ].reverse();
     });
