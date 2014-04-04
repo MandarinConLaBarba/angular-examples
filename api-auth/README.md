@@ -23,7 +23,7 @@ If you haven't already, install bower and component globally:
 
 ```
 $ npm install -g bower
-$ npm install -g component
+$ npm install -g component@0.18.0
 ```
 
 And in another terminal/session (or same window if you made the process go into background):
