@@ -42,7 +42,7 @@ function applyRoutes(app) {
     var defaultMiddleware = [];
 
     app.get('/', function(req, res) {
-        res.send("CircleStreet.v3.server API");
+        res.send("I'm an API.");
     });
 
     app.post('/auth',
