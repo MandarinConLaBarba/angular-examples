@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href="../styles/foundation.min.css" rel="stylesheet">
+    <link href="../styles/app.css" rel="stylesheet">
+
+    <style type="text/css">
+        .button {
+            border: 1px solid #000;
+            border-radius: 3px;
+            -webkit-box-shadow: 1px 1px 1px 0px #000000;
+            -moz-box-shadow: 1px 1px 1px 0px #000000;
+            box-shadow: 1px 1px 1px 0px #000000;
+            background-color: lightgray;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button.active {
+            background-color: yellow;
+        }
+
+        body {
+            margin: 50px;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+        .modal-overlay {
+            position: absolute;
+            z-index: 99;
+            left: 0px;
+            top: -10px;
+            width: 80%;
+            height: 90%;
+            background-color: #ffffff;
+            opacity: .0;
+        }
+
+        .modal-dialog {
+            width: 50%;
+            position: absolute;
+            background-color: #ffffff;
+            border: 1px solid lightblue;
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 4px 4px 80px #000000;
+            z-index: 10000;
+        }
+        .modal-dialog-content {
+            padding:10px;
+            text-align: left;
+        }
+        .modal-close {
+            position: absolute;
+            top: 3px;
+            right: 5px;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div ng-app="exampleApp" ng-controller="appController">
+
+    <a class="button clickable" ng-click="showTheModal = true">Show the modal</a>
+    <br/>
+    <br/>
+    <a class="button clickable" ng-click="showTheCloseableModal = true">Show closeable modal</a>
+    <br/>
+    <br/>
+    <a class="button clickable" ng-click="showTheDirectiveModal = true">Show directive modal</a>
+    <br/>
+    <br/>
+
+    <modal show="showTheModal" closeable="false">
+        Hello! This is a modal that has no close button!
+    </modal>
+
+
+    <modal show="showTheCloseableModal" closeable="true">
+        Hello! This is a modal that can be closed!
+    </modal>
+
+
+    <modal show="showTheDirectiveModal" closeable="true">
+        <login></login>
+    </modal>
+
+</div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module("exampleApp", []);
+
+    app.controller('appController', ['$scope', function($scope) {
+
+    }]);
+
+    app.directive('modal', function() {
+        return {
+            restrict: 'E',
+            scope: {
+                show: '=',
+                closeable : '='
+            },
+            replace: true,
+            transclude: true,
+            link: function(scope, element, attrs) {
+
+                scope.hideModal = function() {
+                    scope.show = false;
+                };
+            },
+            templateUrl: "modal.html"
+        };
+    });
+
+    app.directive('login', function() {
+        return {
+            restrict: 'E',
+            link: function(scope, element, attrs) {
+
+                //login logic
+
+            },
+            templateUrl: "login.html"
+        };
+    });
+</script>
+
+</body>
+</html>

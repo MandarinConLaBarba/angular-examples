@@ -1,0 +1,10 @@
+<div class='modal' ng-show='show'>
+    <div class='modal-overlay' ng-click='hideModal()'></div>
+    <div class='modal-dialog'>
+        <div class='modal-close'
+             ng-show="closeable"
+             ng-click='hideModal()'>close</i>
+        </div>
+        <div class='modal-dialog-content' ng-transclude></div>
+    </div>
+</div>
